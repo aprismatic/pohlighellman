@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3303BAA0-773E-4F5D-B699-F3CA3CD5BBB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9993F7DE-AFDC-4D82-A030-C3C5E373CE77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2955983D-FEC3-4C34-8890-DD89658479E9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aprismatic.PohligHellman", "src\Aprismatic.ElGamalExt\Aprismatic.PohligHellman.csproj", "{21BF08AE-7DBC-4EE4-9315-4304129D3E11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PohligHellmanTests", "test\ElGamalTests\PohligHellmanTests.csproj", "{45732104-089F-4843-B5BD-726ADC70FE45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21BF08AE-7DBC-4EE4-9315-4304129D3E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21BF08AE-7DBC-4EE4-9315-4304129D3E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21BF08AE-7DBC-4EE4-9315-4304129D3E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21BF08AE-7DBC-4EE4-9315-4304129D3E11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45732104-089F-4843-B5BD-726ADC70FE45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45732104-089F-4843-B5BD-726ADC70FE45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45732104-089F-4843-B5BD-726ADC70FE45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45732104-089F-4843-B5BD-726ADC70FE45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21BF08AE-7DBC-4EE4-9315-4304129D3E11} = {3303BAA0-773E-4F5D-B699-F3CA3CD5BBB4}
+		{45732104-089F-4843-B5BD-726ADC70FE45} = {9993F7DE-AFDC-4D82-A030-C3C5E373CE77}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {575666A0-07A3-4BB3-95A8-281FA6583CE7}
+	EndGlobalSection
+EndGlobal

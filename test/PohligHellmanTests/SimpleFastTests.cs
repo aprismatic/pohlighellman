@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 using System.Security.Cryptography;
-using Aprismatic;
 using Aprismatic.PohligHellman;
 using Xunit;
 using Xunit.Abstractions;

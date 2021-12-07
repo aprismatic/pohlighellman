@@ -4,8 +4,6 @@
     <Description>Extension for the .NET Framework cryptography subsystem, which introduces the Pohlig-Hellman exponentiation cipher.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Aprismatic.BigFraction" Version="0.1.5" />
-    <PackageReference Include="Aprismatic.BigIntegerExt" Version="0.1.6" />
-    <PackageReference Include="System.Threading.Channels" Version="5.0.0" />
+    <PackageReference Include="Aprismatic.BigIntegerExt" Version="0.1.7" />
   </ItemGroup>
 </Project>

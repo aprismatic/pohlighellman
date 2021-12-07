@@ -20,7 +20,7 @@ namespace ElGamalTests
         [Fact(DisplayName = "Lengths")]
         public void TestLengths() {
             for (var i = 0; i < Globals.Iterations; i++) {
-                using var algorithm = new PohligHellman(_rnd.Next(8, 4096));
+                using var algorithm = new PohligHellman(_rnd.Next(Globals.MinKeyLength, Globals.MaxKeyLength));
                 var prms = algorithm.ExportParameters();
 
                 var P = new BigInteger(prms.P);

@@ -44,11 +44,7 @@ namespace Aprismatic.PohligHellman
         // TODO: This method should probably move to KeyStruct
         private PohligHellmanKeyStruct CreateKeyPair() {
             BigInteger P;
-
-            do {
-                P = BigInteger.One.GenPseudoPrime(KeySize, 16, _rng);
-            } while (P.BitCount() != KeySize);
-
+            P = BigInteger.One.GenPseudoPrime(KeySize, 16, _rng);
             return CreateKeyPair(P);
         }
 

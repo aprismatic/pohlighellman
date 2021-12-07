@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Numerics;
 using System.Security.Cryptography;
-using Aprismatic;
 using Aprismatic.PohligHellman;
 using Xunit;
 using Xunit.Abstractions;
@@ -26,9 +25,9 @@ namespace ElGamalTests
         [Fact(DisplayName = "Zero")]
         public void TestZero() {
             for (var i = 0; i < Globals.Iterations; i++) {
-                using var algorithm = new PohligHellman(_rnd.Next(8, 4096));
+                using var algorithm = new PohligHellman(_rnd.Next(Globals.MinKeyLength, Globals.MaxKeyLength));
 
-                var z = new BigInteger(0);
+                var z = BigInteger.Zero;
 
                 var z_enc = algorithm.EncryptData(z);
                 var z_dec = algorithm.DecryptData(z_enc);
@@ -40,9 +39,9 @@ namespace ElGamalTests
         [Fact(DisplayName = "One")]
         public void TestOne() {
             for (var i = 0; i < Globals.Iterations; i++) {
-                using var algorithm = new PohligHellman(_rnd.Next(8, 4096));
+                using var algorithm = new PohligHellman(_rnd.Next(Globals.MinKeyLength, Globals.MaxKeyLength));
 
-                var o = new BigInteger(1);
+                var o = BigInteger.One;
 
                 var o_enc = algorithm.EncryptData(o);
                 var o_dec = algorithm.DecryptData(o_enc);

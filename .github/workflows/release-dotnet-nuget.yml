@@ -16,8 +16,8 @@ jobs:
       run: |
         nuget sources update -Name 'github' `
                              -Source https://nuget.pkg.github.com/aprismatic/index.json `
-                             -UserName ${{ secrets.GithubUsername }} `
-                             -Password ${{ secrets.GithubToken }} `
+                             -UserName ${{ secrets.GH_USERNAME }} `
+                             -Password ${{ secrets.GH_TOKEN }} `
                              -ConfigFile ./nuget.config
     - name: Restore packages
       run: nuget restore
@@ -38,8 +38,8 @@ jobs:
       run: |
         nuget sources update -Name 'github' `
                              -Source https://nuget.pkg.github.com/aprismatic/index.json `
-                             -UserName ${{ secrets.GithubUsername }} `
-                             -Password ${{ secrets.GithubToken }} `
+                             -UserName ${{ secrets.GH_USERNAME }} `
+                             -Password ${{ secrets.GH_TOKEN }} `
                              -ConfigFile ./nuget.config
     - name: Restore packages
       run: nuget restore
@@ -67,6 +67,6 @@ jobs:
     - name: Release artifacts
       uses: skx/github-action-publish-binaries@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
         args: 'nupkgs/*'

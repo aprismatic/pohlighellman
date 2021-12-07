@@ -18,8 +18,8 @@ jobs:
       run: |
         nuget sources update -Name 'github' `
                              -Source https://nuget.pkg.github.com/aprismatic/index.json `
-                             -UserName ${{ secrets.GithubUsername }} `
-                             -Password ${{ secrets.GithubToken }} `
+                             -UserName ${{ secrets.GH_USERNAME }} `
+                             -Password ${{ secrets.GH_TOKEN }} `
                              -ConfigFile ./nuget.config
     - name: Restore packages
       run: nuget restore

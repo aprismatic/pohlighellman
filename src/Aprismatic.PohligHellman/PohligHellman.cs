@@ -43,20 +43,19 @@ namespace Aprismatic.PohligHellman
 
         // TODO: This method should probably move to KeyStruct
         private PohligHellmanKeyStruct CreateKeyPair() {
-            BigInteger P;
-            P = BigInteger.One.GenPseudoPrime(KeySize, 16, _rng);
+            var P = BigInteger.One.GenPseudoPrime(KeySize, 16, _rng);
             return CreateKeyPair(P);
         }
 
         private PohligHellmanKeyStruct CreateKeyPair(BigInteger P) {
             BigInteger E, D;
-            var PminusTwo = P - 2;
+            var PminusOne = P - BigInteger.One;
 
             do {
-                E = BigInteger.Zero.GenPseudoPrime(KeySize, 16, _rng);
-            } while (!(E <= 1 || E >= PminusTwo));
+                E = BigInteger.Zero.GenRandomBits(2, PminusOne, _rng);
+            } while (BigInteger.GreatestCommonDivisor(E, PminusOne) != BigInteger.One);
 
-            D = E.ModInverse(P - BigInteger.One);
+            D = E.ModInverse(PminusOne);
 
             return new PohligHellmanKeyStruct(P, E, D);
         }

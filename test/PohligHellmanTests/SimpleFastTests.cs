@@ -5,14 +5,14 @@ using Aprismatic.PohligHellman;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace ElGamalTests
+namespace PohligHellmanTests
 {
     public class SimpleFastTests : IDisposable
     {
         private readonly ITestOutputHelper _output;
 
         private readonly Random _rnd = new();
-        private readonly RandomNumberGenerator _rng = new RNGCryptoServiceProvider();
+        private readonly RandomNumberGenerator _rng = RandomNumberGenerator.Create();
         
         public SimpleFastTests(ITestOutputHelper output) {
             _output = output;

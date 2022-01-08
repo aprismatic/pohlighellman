@@ -1,4 +1,4 @@
-﻿namespace ElGamalTests
+﻿namespace PohligHellmanTests
 {
     public static class Globals
     {

@@ -5,7 +5,7 @@ using Aprismatic.PohligHellman;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace ElGamalTests
+namespace PohligHellmanTests
 {
     public class KeyStruct
     {
@@ -20,11 +20,19 @@ namespace ElGamalTests
         [Fact(DisplayName = "Lengths")]
         public void TestLengths() {
             for (var i = 0; i < Globals.Iterations; i++) {
-                using var algorithm = new PohligHellman(_rnd.Next(Globals.MinKeyLength, Globals.MaxKeyLength));
-                var prms = algorithm.ExportParameters();
+                var keySize = _rnd.Next(Globals.MinKeyLength, Globals.MaxKeyLength);
+                using var algorithm = new PohligHellman(keySize);
+                Assert.Equal(keySize, algorithm.KeySize);
 
+                var prms = algorithm.ExportParameters();
                 var P = new BigInteger(prms.P);
-                Assert.Equal(algorithm.KeySize, P.BitCount());
+                var E = new BigInteger(prms.E);
+                var D = new BigInteger(prms.D);
+
+                Assert.Equal(keySize, P.BitCount());
+                Assert.True(1 < E && E <= P - 2);
+                Assert.True(1 < D && D <= P - 2);
+                Assert.Equal(BigInteger.One, (E * D) % (P - 1));
 
                 algorithm.Dispose();
             }

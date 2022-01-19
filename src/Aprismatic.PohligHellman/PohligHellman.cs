@@ -19,13 +19,14 @@ namespace Aprismatic.PohligHellman
         public PohligHellman(int keySize) {
             _rng = RandomNumberGenerator.Create();
             KeySize = keySize;
-            _keyStruct = CreateKeyPair();
+            var p = BigInteger.One.GenPseudoPrime(KeySize, 16, _rng);
+            _keyStruct = CreateKeyPair(p);
         }
 
-        public PohligHellman(BigInteger P) {
+        public PohligHellman(BigInteger p) {
             _rng = RandomNumberGenerator.Create();
-            KeySize = P.BitCount();
-            _keyStruct = CreateKeyPair(P);
+            KeySize = p.BitCount();
+            _keyStruct = CreateKeyPair(p);
         }
 
         // TODO: Consolidate constructors in one method
@@ -42,11 +43,6 @@ namespace Aprismatic.PohligHellman
         public PohligHellman(string xml) : this(PohligHellmanParameters.FromXml(xml)) { }
 
         // TODO: This method should probably move to KeyStruct
-        private PohligHellmanKeyStruct CreateKeyPair() {
-            var P = BigInteger.One.GenPseudoPrime(KeySize, 16, _rng);
-            return CreateKeyPair(P);
-        }
-
         private PohligHellmanKeyStruct CreateKeyPair(BigInteger P) {
             BigInteger E, D;
             var PminusOne = P - BigInteger.One;
@@ -62,7 +58,7 @@ namespace Aprismatic.PohligHellman
 
         public byte[] EncryptData(BigInteger message) {
             if (message < 0 || message > MaxEncryptableValue)
-                throw new ArgumentException($"Value should be 0 <= m <= {MaxEncryptableValue}", nameof(message));
+                throw new ArgumentException($"Value should be 0 <= m <= {MaxEncryptableValue} under the current encryption key", nameof(message));
 
             var ctbs = _keyStruct.CiphertextLength;
             var array = new byte[ctbs];
